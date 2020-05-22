@@ -14,7 +14,7 @@ def index():
     popular_movies = get_movies('popular')
     print(popular_movies)
     title = "Home - welcome to the Best Movie Review Website Online"
-    return render_template('index.html', title = title, popular = popular_movies )#first message = in html doc, second html = views file
+    return render_template('index.html', title = title, popular = popular_movies)#first message = in html doc, second html = views file
 
 #dynamic routes
 @app.route('/movie/<int:movie_id>')

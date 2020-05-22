@@ -2,7 +2,7 @@ from app import app
 import urllib.request, json
 from .models import movie
 
-Movie = movie.Movie
+Movie1 = movie.Movie
 
 #Getting API key
 api_key = app.config['MOVIE_API_KEY']
@@ -10,17 +10,20 @@ api_key = app.config['MOVIE_API_KEY']
 #Getting the movie base URL
 base_url = app.config['MOVIE_API_BASE_URL']
 
+movie_results = []
 def get_movies(category):
     '''
     Function that gets the json response to our url request
     '''
     get_movies_url = base_url.format(category, api_key)
+    
+
 
     with urllib.request.urlopen(get_movies_url) as url:
         get_movies_data = url.read()
         get_movies_response = json.loads(get_movies_data)
 
-        movie_results = None
+        #movie_results = None
 
         if get_movies_response['results']:
             movie_results_list = get_movies_response['results']
@@ -38,18 +41,20 @@ def process_results(movie_list):
     Returns :
     movie_results: A list of movie objects
     '''
-    movie_results = []
+    #movie_results = []
     for movie_item in movie_list:
-        id = movie_item.get('id')
-        title = movie_list.get('original title')
-        overview = movie_item.get('overview')
-        poster = movie_item.get('poster_path')
-        vote_average = movie_item.get('vote_average')
-        vote_count = movie_item.get('vote_count')
+        id1 = movie_item.get('id')
+        title1 = movie_item.get('original_title')
+        overview1 = movie_item.get('overview')
+        poster1 = movie_item.get('poster_path')
+        vote_average1 = movie_item.get('vote_average')
+        vote_count1 = movie_item.get('vote_count')
 
-    if poster:
-        movie_object = Movie(id, title, overview, poster, vote_average, vote_count)
-        movie_results.append(movie_object)
+        if poster1:
+            movie_object = Movie1(id1, title1, overview1, poster1, vote_average1, vote_count1)
+            movie_results.append(movie_object)
+
+
 
     return movie_results
 
