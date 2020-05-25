@@ -79,6 +79,6 @@ def get_movie(id):
             vote_average2 = movie_details_response.get('voter_average')
             vote_count2 = movie_details_response.get('voter_count')
             
-            movie_object = Movie(id2, title2, overview2, poster2, vote_average2, vote_count2)
+            movie_object = Movie1(id2, title2, overview2, poster2, vote_average2, vote_count2)
 
     return movie_object
