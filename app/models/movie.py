@@ -13,12 +13,32 @@ class Movie:
         5. vote_count - How many people have rated the movie
         6. id - The movie id
         '''
+        
         self.id = id
         self.title = title
         self.overview = overview
         self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
         self.vote_average = vote_average
         self.vote_count = vote_count
+
+
+    '''    
+    def __repr__(self):#, id, title, overview, poster, vote_average, vote_count):
+        self.id = "%s" % (self.id)
+        self.title = "%s" % (self.title)
+        self.overview = "%s" % (self.overview)
+        self.poster = "%s" % (self.poster)
+        self.vote_average = "%s" % (self.vote_average)
+        self.vote_count = "%s" % (self.vote_count)
+    '''
+
+
+        
+
+    
+
+        
+
 
 
         
