@@ -1,44 +1,37 @@
-{% import 'macros.html' as macro %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% if title %}
-    <title>{{title}}</title>
-    {% else %}
-    <title> Welcome to the best Movie Review website </title>
-    {% endif %}
-</head>
-
-<body>
-    <!--Popular movie section-->
-    <h3>Popular Movies</h3>
-    <ul>
-        {{macro.displayMovieList(popular)}}
-    </ul>
-
-    <hr style="width: auto;">
-
-    <!--Upcoming movie section-->
-    <h3>Upcoming Movies</h3>
-    <ul>
-        {{macro.displayMovieList(upcoming)}}
-    </ul>
-
-    <hr style="width: auto;">
-
-    <!--Now Showing movie section-->
-    <h3>Now Showing </h3>
-    <ul>
-        {{macro.displayMovieList(now_showing)}}
-    </ul>
-
-    <hr style="width: auto;">
+<!--styles block-->
+{% block styles %} {{ super() }}
+<link rel='stylesheet' href="{{url_for('static', filename ='css/index.css')}}"> {% endblock %}
 
 
+<!--Content Block-->
+{% block content %}
 
+<!--Popular movie section-->
+<h3>Popular Movies</h3>
+<ul>
+    {{macro.displayMovieList(popular)}}
+</ul>
 
-</body>
+<br>
+<hr style="width: 75%; margin: 0 auto;">
+<br>
 
-</html>
+<!--Upcoming movie section-->
+<h3>Upcoming Movies</h3>
+<ul>
+    {{macro.displayMovieList(upcoming)}}
+</ul>
+
+<br>
+<hr style="width: 75%; margin: 0 auto;">
+<br>
+
+<!--Now Showing movie section-->
+<h3>Now Showing </h3>
+<ul>
+    {{macro.displayMovieList(now_showing)}}
+</ul>
+
+{% endblock %}
