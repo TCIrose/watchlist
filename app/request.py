@@ -58,5 +58,27 @@ def process_results(movie_list):
 
     return movie_results
 
+def get_movie(id):
+    '''
+    function to get movie details using the movie id 
+    Args:
+        id = movie's id
+    '''
+    get_movie_details_url = base_url.format(id, api_key)
 
+    with urllib.request.urlopen(get_movie_details_url) as url:
+        movie_details_data = url.read()
+        movie_details_response = json.loads(movie_details_data)
 
+        movie_object = None
+        if movie_details_response:
+            id2 = movie_details_response.get('id')
+            title2 = movie_details_response.get('original_title')
+            overview2 = movie_details_response.get('overview')
+            poster2 = movie_details_response.get('poster')
+            vote_average2 = movie_details_response.get('voter_average')
+            vote_count2 = movie_details_response.get('voter_count')
+            
+            movie_object = Movie(id2, title2, overview2, poster2, vote_average2, vote_count2)
+
+    return movie_object
